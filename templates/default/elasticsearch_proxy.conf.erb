@@ -6,6 +6,11 @@ server {
   error_log   <%= node.elasticsearch[:nginx][:log_dir] %>/elasticsearch-errors.log;
   access_log  <%= node.elasticsearch[:nginx][:log_dir] %>/elasticsearch.log;
 
+  <% if node.elasticsearch[:nginx][:use_ssl] -%>
+  ssl_certificate     <%= node.elasticsearch[:nginx][:ssl_cert] %>
+  ssl_certificate_key <%= node.elasticsearch[:nginx][:ssl_key] %>
+  <% end -%>
+
   location <%= node.elasticsearch[:nginx][:location] %> {
 
     # Deny Nodes Shutdown API
