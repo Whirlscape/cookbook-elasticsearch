@@ -7,7 +7,7 @@ server {
   access_log  <%= node.elasticsearch[:nginx][:log_dir] %>/elasticsearch.log;
 
   <% if node.elasticsearch[:nginx][:use_ssl] -%>
-  ssl_on;
+  ssl on;
   ssl_certificate     <%= node.elasticsearch[:nginx][:ssl_cert] %>;
   ssl_certificate_key <%= node.elasticsearch[:nginx][:ssl_key] %>;
   <% end -%>
